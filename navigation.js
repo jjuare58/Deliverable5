@@ -1,3 +1,4 @@
+// Finding the Menu button and the links list so the code can use them
 const button = document.querySelector(".menu-button");
 const list = document.querySelector("#primary-nav");
 
@@ -24,6 +25,14 @@ button.addEventListener("click", () => {
   setMenu(button.getAttribute("aria-expanded") !== "true");
 });
 
-// TODO 4: close on Escape when open, then return focus to the button.
+// When Escape is pressed and the menu is open, close it
+// and move focus back to the button so the keyboard user isn't lost
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" &&
+      button.getAttribute("aria-expanded") === "true") {
+    setMenu(false);
+    button.focus();
+  }
+});
 
 // Add a comment above every logical step explaining what it does and why it is needed.
