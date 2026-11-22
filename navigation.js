@@ -1,12 +1,12 @@
 const button = document.querySelector(".menu-button");
 const list = document.querySelector("#primary-nav");
 
-// TODO 1: progressively enhance the document and initialize the narrow state.
 
-// TODO 2: write one named function that keeps aria-expanded and visible state synchronized.
+// Add the "js" class to <html> so the CSS knows JavaScript is working
+document.documentElement.classList.add("js");
 
-// TODO 3: use the native button's click event to toggle the state.
+// Show the Menu button (it starts hidden in the HTML)
+button.hidden = false;
 
-// TODO 4: close on Escape when open, then return focus to the button.
-
-// Add a comment above every logical step explaining what it does and why it is needed.
+// Start with the menu closed on small screens
+list.dataset.open = "false";
