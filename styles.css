@@ -45,6 +45,7 @@ body {
     font-weight: 700;
 }
 
+/* Menu button, big enough to tap */
 .menu-button {
     min-height: 2.75rem;
     margin-top: .75rem;
@@ -97,5 +98,12 @@ main {
     min-height: 55vh;
     padding-block: 2rem;
 }
+/* Wide screens: the links fit in one row at about 750px, so 48rem gives a little extra room */
+@media (min-width: 48rem) {
+    /* No need for the button when the links fit */
+    .menu-button { display: none; }
 
-/* TODO: add the relative-unit breakpoint justified in navigation-plan.html. */
+    /* Always show the links in a row, even if the menu was left closed on a phone */
+    .nav-list,
+    .js .nav-list[data-open] { display: flex; flex-direction: row; }
+}
