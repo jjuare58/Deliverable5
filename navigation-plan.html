@@ -158,19 +158,50 @@
         the Menu button after tabbing, with the menu open. zoom-200-narrow.png shows the page at 200% zoom in the narrow
         layout with the menu open and all links readable.</p>
     <h2>4. Peer task test</h2>
-    <p><strong>Tester relationship (no name needed):</strong> [Response]</p>
-    <p><strong>Two tasks attempted:</strong> [Response]</p>
-    <p><strong>What the tester did or said:</strong> [Direct observation]</p>
-    <p><strong>Change made or justified:</strong> [Response]</p>
+    <p><strong>Tester relationship (no name needed):</strong> Spouse</p>
+    <p><strong>Two tasks attempted:</strong> 1) Find out when the next plant swap is. 2) Find where you'd ask the
+        PlantSwap team a question.</p>
+    <p><strong>What the tester did or said:</strong> I tested at [narrow width using the Menu button / wide width]. For
+        Task 1 the tester chose Swap Events and found the monthly swap date. For Task 2 the tester chose Get Support and
+        found where to contact the team. They completed both tasks without help and clicked the correct link each time.
+    </p>
+    <p><strong>Change made or justified:</strong> No change needed. The tester went straight to the right link for both
+        tasks, so the labels Swap Events and Get Support clearly matched what they were looking for.</p>
     <h2>5. JavaScript code defense</h2>
-    <p>Explain initialization, state synchronization, activation, and Escape/focus behavior in your own words. Refer to
-        the exact variable, attribute, dataset value, function, and event used.</p>
-    <p>[Response]</p>
+    <p>When the page first loads, the code uses <code>querySelector</code> to find the Menu button and the list of
+        links. It saves them as <code>button</code> and <code>list</code> so it knows what to work with. Next, it adds
+        the <code>"js"</code> class to let CSS know JavaScript is working. Then <code>button.hidden = false</code> makes
+        the Menu button visible, and <code>list.dataset.open = "false"</code> makes sure the menu starts closed on
+        smaller screens. If JavaScript doesn't work, the Menu button stays hidden and all the links stay visible so
+        people are still able to use the website.</p>
+    <p>The <code>setMenu</code> function is what opens and closes the menu. It changes <code>aria-expanded</code> so
+        screen readers know whether the menu is open or closed. It also changes <code>data-open</code>, which CSS uses
+        to show or hide the links. Both are included in the same function to make sure what people see on the screen
+        matches what screen readers announce.</p>
+    <p>When someone clicks the Menu button, the <code>click</code> event tells the code to run <code>setMenu</code>. It
+        uses <code>getAttribute("aria-expanded")</code> to check if the menu is already open. If the value isn't
+        <code>"true"</code>, it opens the menu, and if it is <code>"true"</code>, it closes it. This is called a toggle
+        because it switches between two states. Enter and Space work the same way because I used a regular HTML
+        <code>&lt;button&gt;</code>, which already supports those keyboard controls.
+    </p>
+    <p>Lastly, when someone presses Escape, the <code>keydown</code> event checks if <code>event.key === "Escape"</code>
+        and whether the menu is open. If both are true, <code>setMenu(false)</code> closes the menu, and
+        <code>button.focus()</code> moves the keyboard focus back to the Menu button. This helps people using a keyboard
+        keep track of where they are on the page instead of getting stuck on a link that's no longer visible.
+    </p>
     <h2>6. AI disclosure</h2>
-    <p><strong>Tool and purpose, or none:</strong> [Response]</p>
-    <p><strong>Prompt/task:</strong> [Response]</p>
-    <p><strong>Accepted, changed, or rejected output:</strong> [Response]</p>
-    <p><strong>How I verified it:</strong> [Tests and sources]</p>
+    <p><strong>Tool and purpose, or none:</strong> Claude </p>
+    <p><strong>Prompt/task:</strong> I used Claude to break down any materials over this weeks reading that I got caught
+        up on. It was able to provide analogies so I could further understand the material. I picked the topic and draft
+        labels but Claude was able to provide tips on making more concise labels for my menu. An example is instead of
+        visit it recommended I put "Join a Swap" so the user was more aware of the action the link provided.
+        It also suggested the flex-wrap repair after my long-label test failed and I was able to repair it and have
+        claude look over to confirm I had done it correctly.</p>
+    <p><strong>Accepted, changed, or rejected output:</strong> Accepted some of the link labels for my menu as well as
+        the flex wrap repair</p>
+    <p><strong>How I verified it:</strong>
+        https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/flex-wrap
+        https://developer.mozilla.org/en-US/docs/Web/CSS/Reference/Properties/white-space</p>
 </body>
 
 </html>

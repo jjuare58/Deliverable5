@@ -34,5 +34,3 @@ document.addEventListener("keydown", (event) => {
     button.focus();
   }
 });
-
-// Add a comment above every logical step explaining what it does and why it is needed.

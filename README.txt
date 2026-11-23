@@ -1,17 +1,19 @@
-MODULE 5 RESPONSIVE NAVIGATION DELIVERABLE STARTER
+PLANTSWAP - RESPONSIVE NAVIGATION (GIT 337 Deliverable 5)
+Jessica Juarez
 
-Required files:
-- index.html, visit.html, support.html: three-page demonstration shell
-- styles.css: shared component styles and TODO markers
-- navigation.js: minimal behavior scaffold and TODO markers
-- navigation-plan.html: planning, testing, code-defense, and AI evidence
-- README.txt: replace this text with your site description and testing notes
+About the site:
+PlantSwap is a free site where neighbors trade plants with each other.
 
-Use:
-1. Extract the folder before editing.
-2. Keep the required filenames and relative paths.
-3. Replace bracketed placeholders and every TODO.
-4. Test all three pages from the extracted folder.
-5. Zip the complete folder. Re-extract that ZIP and test it before submission.
+What each file does:
+- index.html, visit.html, support.html: the 3 pages of the site. They all use the same header and menu.
+- styles.css: how the header and menu look on phones and big screens.
+- navigation.js: makes the Menu button open and close the links, and lets Escape close the menu.
+- navigation-plan.html: my plan, test results, peer test, code explanation, and AI disclosure.
+- Screenshots folder: my 2 screenshots (keyboard focus and 200% zoom).
 
-Do not replace this scaffold with a framework, library, or navigation plug-in.
+How I tested it:
+- I checked the site in Microsoft Edge at small, medium, and large screen sizes, and at 200% zoom.
+- I used only the keyboard (Tab, Enter, Space, Escape) to make sure the menu works without a mouse.
+- I turned off JavaScript and CSS to make sure all the links still show up.
+- My spouse tried 2 tasks on the site and finished both without help.
+- One fix: long link names were splitting onto 2 lines on bigger screens. I fixed it so whole links move to a new row instead.
