@@ -105,5 +105,8 @@ main {
 
     /* Always show the links in a row, even if the menu was left closed on a phone */
     .nav-list,
-    .js .nav-list[data-open] { display: flex; flex-direction: row; }
+    .js .nav-list[data-open] { display: flex; flex-direction: row; flex-wrap: wrap; }
+
+    /* Keep each label on one line so words don't split */
+    .nav-list a { white-space: nowrap; }
 }

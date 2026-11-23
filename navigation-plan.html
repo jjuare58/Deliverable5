@@ -39,12 +39,13 @@
 
 <body>
     <h1>Navigation Plan and Evidence</h1>
-    <p><strong>Student:</strong> [Name] &nbsp; <strong>Site:</strong> [Site name and purpose]</p>
+    <p><strong>Student:</strong> Jessica Juarez &nbsp; <strong>Site:</strong> PlantSwap, a free local site where
+        neighbors trade houseplants and cuttings</p>
     <h2>1. Priority tasks and content inventory</h2>
     <ol>
-        <li>[Task]</li>
-        <li>[Task]</li>
-        <li>[Optional task]</li>
+        <li>Find a plant or cutting to trade</li>
+        <li>Sign up for the next swap</li>
+        <li>Get help with a question about a swap</li>
     </ol>
     <table>
         <tr>
@@ -53,16 +54,48 @@
             <th>Order/group rationale</th>
         </tr>
         <tr>
-            <td>[Destination]</td>
-            <td>[Label]</td>
-            <td>[Rationale]</td>
+            <td>index.html</td>
+            <td>Home</td>
+            <td>First, since most sites start with Home. The PlantSwap brand link also goes here.</td>
+        </tr>
+        <tr>
+            <td>index.html#browse</td>
+            <td>Browse Plants</td>
+            <td>Task 1 and the main reason people visit, so it comes right after Home.</td>
+        </tr>
+        <tr>
+            <td>index.html#events</td>
+            <td>Swap Events</td>
+            <td>People check when the next swap is before they sign up, so it comes before Join a Swap.</td>
+        </tr>
+        <tr>
+            <td>visit.html</td>
+            <td>Join a Swap</td>
+            <td>Task 2. The label says the action, not just "Visit."</td>
+        </tr>
+        <tr>
+            <td>index.html#how</td>
+            <td>How It Works</td>
+            <td>Helpful for new visitors, but less urgent than finding and joining a swap.</td>
+        </tr>
+        <tr>
+            <td>support.html</td>
+            <td>Get Support</td>
+            <td>Task 3. Last, since help is usually expected at the end of a nav.</td>
         </tr>
     </table>
     <h2>2. Breakpoint evidence</h2>
-    <p><strong>Method and widths tested:</strong> [Response]</p>
-    <p><strong>First content failure:</strong> [What happened and at what width?]</p>
-    <p><strong>Chosen breakpoint in relative units:</strong> [Response]</p>
-    <p><strong>Long-label and zoom retest:</strong> [Observed result and repair]</p>
+    <p><strong>Method and widths tested:</strong> I built the narrow layout first, then temporarily set the links to a
+        row and widened the viewport in Edge DevTools device mode at 320, 500, 600, 700, 750, and 900px.</p>
+    <p><strong>First content failure:</strong> At 320px, labels split onto several lines and How It Works and Get
+        Support ran off the edge. From 500 to about 706px, every two-word label still split onto two lines. At about
+        750px all six labels fit on one line, with little room left.</p>
+    <p><strong>Chosen breakpoint in relative units:</strong> 48rem (768px). It is just above where the links first fit,
+        which gives them a little extra room.</p>
+    <p><strong>Long-label and zoom retest:</strong> With "Get Support and Answers from Our Team," the menu wrapped
+        neatly at 320px, but at 800px every label split onto two lines. I added flex-wrap: wrap and white-space: nowrap
+        in the media query so whole links move to a new row instead. At 200% zoom the page switched to the narrow layout
+        and stayed readable.</p>
     <h2>3. Interaction and failure test record</h2>
     <table>
         <tr>
@@ -73,42 +106,57 @@
         </tr>
         <tr>
             <td>Keyboard: button, Tab, Escape, focus</td>
-            <td>[Expected]</td>
-            <td>[Observed]</td>
-            <td>[Pass/fail and repair]</td>
+            <td>Skip link works, Tab order is logical, Enter and Space open and close the menu, aria-expanded matches
+                what is shown, Escape closes the menu and returns focus to the button, and focus is always visible.</td>
+            <td>The first Tab showed the skip link and Enter jumped to main content. Tab order was skip link, PlantSwap,
+                Menu, then the 6 links. Enter opened the menu (aria-expanded and data-open both "true") and Space closed
+                it (both "false"). Escape from a link closed the menu and the gold outline returned to Menu. The outline
+                was visible on every item.</td>
+            <td>Pass. No repair needed.</td>
         </tr>
         <tr>
             <td>Pointer/touch targets</td>
-            <td>[Expected]</td>
-            <td>[Observed]</td>
-            <td>[Pass/fail and repair]</td>
+            <td>The button and links are at least 44px tall with space between them, and nothing depends on hover.</td>
+            <td>The Menu button measured 44px tall and about 77px wide. Each link was about 48px tall with a 4px gap. In
+                touch emulation, tapping opened the menu and every link worked without hover.</td>
+            <td>Pass. No repair needed.</td>
         </tr>
         <tr>
             <td>320px and breakpoint region</td>
-            <td>[Expected]</td>
-            <td>[Observed]</td>
-            <td>[Pass/fail and repair]</td>
+            <td>At 320px all links show with no overflow. Near the breakpoint, labels stay readable, even when longer.
+            </td>
+            <td>At 320px all 6 links showed with no sideways scrolling, and a long test label wrapped neatly. At 800px
+                the long label made every link split onto two lines.</td>
+            <td>Fail, then Pass. Added flex-wrap: wrap to the wide list and white-space: nowrap to the links. Retest at
+                800px: each label stayed on one line and the long link moved to a second row.</td>
         </tr>
         <tr>
             <td>200% zoom</td>
-            <td>[Expected]</td>
-            <td>[Observed]</td>
-            <td>[Pass/fail and repair]</td>
+            <td>The page switches to the narrow layout, text is readable, and the menu still works.</td>
+            <td>At 200% zoom the page switched to the narrow layout. Enter opened the menu and all 6 links were readable
+                with no overlap or sideways scrolling.</td>
+            <td>Pass. No repair needed.</td>
         </tr>
         <tr>
             <td>JavaScript unavailable</td>
-            <td>[Expected]</td>
-            <td>[Observed]</td>
-            <td>[Pass/fail and repair]</td>
+            <td>The Menu button stays hidden and every link is visible and usable.</td>
+            <td>With JavaScript disabled in DevTools, html had no "js" class, no Menu button showed, and all 6 links
+                were visible and clickable at 400px and 900px.</td>
+            <td>Pass. No repair needed.</td>
         </tr>
         <tr>
             <td>CSS unavailable / wide recovery</td>
-            <td>[Expected]</td>
-            <td>[Observed]</td>
-            <td>[Pass/fail and repair]</td>
+            <td>Without CSS, the content reads in logical order. At wide widths the links show even if the menu was left
+                closed.</td>
+            <td>With the stylesheet commented out, the page read in order: skip link, PlantSwap, Menu button, list of
+                links, main content, footer. With CSS on, I left the menu closed at 400px and changed to 900px; the
+                links showed in a row and the button was hidden.</td>
+            <td>Pass. No repair needed.</td>
         </tr>
     </table>
-    <p><strong>Screenshot filenames and what each proves:</strong> [Response]</p>
+    <p><strong>Screenshot filenames and what each proves:</strong> keyboard-focus.png shows the gold focus outline on
+        the Menu button after tabbing, with the menu open. zoom-200-narrow.png shows the page at 200% zoom in the narrow
+        layout with the menu open and all links readable.</p>
     <h2>4. Peer task test</h2>
     <p><strong>Tester relationship (no name needed):</strong> [Response]</p>
     <p><strong>Two tasks attempted:</strong> [Response]</p>
